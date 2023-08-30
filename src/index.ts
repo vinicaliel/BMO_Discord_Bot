@@ -1,21 +1,13 @@
 import { ExtendedClient } from "./structs/extendedClient";
-
 export * from "colors";
+import config from "./structs/config.json";
 
 const client = new ExtendedClient();
 
 client.start();
 
-export { client };
+export { client, config };
 
 client.on("ready", () => {
   console.log("BMO carregado e pronto para atender seus comandos".green);
-});
-
-client.on("messageCreate", (message) => {
-  if (message.author.id == client.user?.id) return;
-
-  message.reply({
-    content: `Olá ${message.author.username}`,
-  });
 });
